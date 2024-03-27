@@ -36,8 +36,17 @@ def point_dans_poly(p,pol):
     """
     s=Segment([p,Point([p.coordinates[0],pol.min_y - 1])])
     compt=0
-    x_ancien=pol.points[-1].coordinates[0]  # take the last point as a reference for the first segment
     mem_pour_dist=None
+    
+    # take the last point as a reference for the first segment, if last segment is horizontal take the one before
+    curr_x = pol.points[0].coordinates[0]
+    for i in range(-1, -len(pol.points), -1):
+        print(curr_x, i, pol.points[i].coordinates[0])
+        if curr_x == pol.points[i].coordinates[0]:  # is horizontal
+            continue
+        
+        x_ancien = pol.points[i].coordinates[0]
+        break
 
     for segment in pol.segments():
 
