@@ -36,10 +36,15 @@ def point_dans_poly(p,pol):
     """
     s=Segment([p,Point([p.coordinates[0],pol.min_y - 1])])
     compt=0
-    x_ancien=pol.points[-1].coordinates[0]  # tqke the last point as a reference for the first segment
+    x_ancien=pol.points[-1].coordinates[0]  # take the last point as a reference for the first segment
     mem_pour_dist=None
 
     for segment in pol.segments():
+
+        # check if segment if vertical
+        if segment.endpoints[0].coordinates[0] == segment.endpoints[1].coordinates[0]:
+            continue
+
         b,x,y= intersect(s,segment)
 
         if b:
@@ -47,22 +52,11 @@ def point_dans_poly(p,pol):
                 mem_pour_dist = Point([x,y])
 
             if (x==segment.endpoints[0].coordinates[0] and y==segment.endpoints[0].coordinates[1]):
-                if x_ancien<p.coordinates[0]:
-                    if -pi/2<=segment.direction()<=pi/2:
-                        continue
-                    else:
-                        compt+=1
-
-                if x_ancien>p.coordinates[0]:
-                    if not(-pi/2<=segment.direction()<=pi/2):
-                        continue
-                    else:
-                        compt+=1
-
-                if x_ancien==p.coordinates[0]:
+                if (x_ancien > x and x > segment.endpoints[1].coordinates[0]) or (x_ancien < x and x < segment.endpoints[1].coordinates[0]):
+                    x_ancien=segment.endpoints[0].coordinates[0]
                     continue
-            else:
-                compt +=1
+                
+            compt +=1
 
         x_ancien=segment.endpoints[0].coordinates[0]
 
