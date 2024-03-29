@@ -1,0 +1,47 @@
+#! /usr/bin/python
+
+import sys
+
+POLYGON_PATTERN = "polygon"
+
+
+def get_polygon(line):
+    points = line.split('"')[1].split(" ")
+    polygon = []
+    for p in points:
+        coord = [int(c) for c in p.split(",")]
+        polygon.append(tuple(coord))
+    return polygon
+
+
+def clear_beginning(line):
+    c = 0
+    while c < len(line) and line[c] in (' ', '\t', '<'):
+        c += 1
+    return line[c:]
+
+
+def main():
+    for svg_path in sys.argv[1:]:
+        poly_path = svg_path[:-4] + ".poly"
+        if svg_path[-4:] != ".svg":
+            print("IL FAUT UN .svg POUR CE PRG")
+            print("Fichier fourni :", svg_path)
+            return
+
+        with open(svg_path, "r") as svg, open(poly_path, "w") as poly:
+            id_polygon = 0
+            for line in svg.readlines():
+                line = clear_beginning(line)
+                if len(line) > len(POLYGON_PATTERN) and line[:len(POLYGON_PATTERN)] == POLYGON_PATTERN:
+                    polygon_points = get_polygon(line)
+                    for point in polygon_points:
+                        poly.write(" ".join([str(id_polygon), str(point[0]), str(point[1])]) + "\n")
+                    id_polygon += 1
+
+            print(id_polygon, "polygone(s) trouvé(s) et converti(s).")
+            print("Fichier de sortie : " + poly_path + ".")
+
+
+if __name__ == '__main__':
+    main()

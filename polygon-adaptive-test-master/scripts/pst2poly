@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+# Convertit des fichiers psTricks (que l'on peut exporter depuis Geogebra) en .poly
+import sys
+import os
+
+
+def main():
+    args = sys.argv[1:]
+    reverse = False
+    if args[0] == "--reverse":
+        args = args[1:]
+        reverse = True
+    for pstfile in args:
+        convert2poly(pstfile, reverse)
+
+
+def convert2poly(filename: str, reverse_y: bool):
+    base, extension = os.path.splitext(filename)
+    polyfile = base + ".poly"
+    with open(filename, "r") as input, open(polyfile, "w") as output:
+        n = 0  # polygon counter
+        pts = 0  # point counter
+        for line in input:
+            if line.startswith("\\pspolygon"):
+                parameters_sep_idx = line.rindex("]")
+                points_list = line[parameters_sep_idx+1:]
+                # points_list looks like: (x1,y1)(x2,y2)(x3,y3)...
+                for point_txt in points_list.split(")"):
+                    coords = point_txt[1:].split(",")
+                    if len(coords) == 2:
+                        x, y = map(float, coords) # "(x1,y1" => x,y
+                        if reverse_y:
+                            y = -y
+                        output.write(f"{n} {x} {y}\n")
+                        pts += 1
+
+                n += 1
+    print("Converted %s to .poly (%d polygons, %d points)" % (filename, n, pts))
+
+
+main()

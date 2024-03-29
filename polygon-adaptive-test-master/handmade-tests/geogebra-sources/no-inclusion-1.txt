@@ -1,0 +1,47 @@
+\documentclass[10pt]{article}
+\usepackage{pstricks-add}
+\pagestyle{empty}
+\begin{document}
+\newrgbcolor{ffxfqq}{1 0.4980392156862745 0}
+\newrgbcolor{zzttqq}{0.6 0.2 0}
+\newrgbcolor{qqccqq}{0 0.8 0}
+\psset{xunit=1cm,yunit=1cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.6pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-2.83435,-4.344221565305411)(6.235866655298362,4.035588493966435)
+\multips(0,-4)(0,0.5){17}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-2.83435,0)(6.235866655298362,0)}
+\multips(-2,0)(0.5,0){19}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-4.344221565305411)(0,4.035588493966435)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=0.5,Dy=0.5,ticksize=-2pt 0,subticks=2]{->}(0,0)(-2.83435,-4.344221565305411)(6.235866655298362,4.035588493966435)
+\pspolygon[linewidth=2pt,linecolor=blue,fillcolor=blue,fillstyle=solid,opacity=0.1](-1,0)(0,-1)(1,0)(0,1)
+\pspolygon[linewidth=2pt,linecolor=ffxfqq,fillcolor=ffxfqq,fillstyle=solid,opacity=0.1](-2,-0.5)(-1,-0.5)(0,-1.5)(0,-2)(-0.5,-2)
+\pspolygon[linewidth=2pt,linecolor=zzttqq,fillcolor=zzttqq,fillstyle=solid,opacity=0.1](-2.5,-0.5)(-1.5,-1.5)(-2.5,-1.5)
+\pspolygon[linewidth=2pt,linecolor=ffxfqq,fillcolor=ffxfqq,fillstyle=solid,opacity=0.1](1,2)(1,0.5)(2.5,0.5)(2.5,1.5)
+\pspolygon[linewidth=2pt,linecolor=qqccqq,fillcolor=qqccqq,fillstyle=solid,opacity=0.1](1.5,0)(0.5,-1)(0.5,-2)(2.5,-2)(2.5,0)
+\psline[linewidth=2pt,linecolor=blue](-1,0)(0,-1)
+\psline[linewidth=2pt,linecolor=blue](0,-1)(1,0)
+\psline[linewidth=2pt,linecolor=blue](1,0)(0,1)
+\psline[linewidth=2pt,linecolor=blue](0,1)(-1,0)
+\psline[linewidth=2pt,linecolor=ffxfqq](-2,-0.5)(-1,-0.5)
+\psline[linewidth=2pt,linecolor=ffxfqq](-1,-0.5)(0,-1.5)
+\psline[linewidth=2pt,linecolor=ffxfqq](0,-1.5)(0,-2)
+\psline[linewidth=2pt,linecolor=ffxfqq](0,-2)(-0.5,-2)
+\psline[linewidth=2pt,linecolor=ffxfqq](-0.5,-2)(-2,-0.5)
+\psline[linewidth=2pt,linecolor=zzttqq](-2.5,-0.5)(-1.5,-1.5)
+\psline[linewidth=2pt,linecolor=zzttqq](-1.5,-1.5)(-2.5,-1.5)
+\psline[linewidth=2pt,linecolor=zzttqq](-2.5,-1.5)(-2.5,-0.5)
+\psline[linewidth=2pt,linecolor=ffxfqq](1,2)(1,0.5)
+\psline[linewidth=2pt,linecolor=ffxfqq](1,0.5)(2.5,0.5)
+\psline[linewidth=2pt,linecolor=ffxfqq](2.5,0.5)(2.5,1.5)
+\psline[linewidth=2pt,linecolor=ffxfqq](2.5,1.5)(1,2)
+\psline[linewidth=2pt,linecolor=qqccqq](1.5,0)(0.5,-1)
+\psline[linewidth=2pt,linecolor=qqccqq](0.5,-1)(0.5,-2)
+\psline[linewidth=2pt,linecolor=qqccqq](0.5,-2)(2.5,-2)
+\psline[linewidth=2pt,linecolor=qqccqq](2.5,-2)(2.5,0)
+\psline[linewidth=2pt,linecolor=qqccqq](2.5,0)(1.5,0)
+\begin{scriptsize}
+\rput[bl](-0.1590244403972487,-0.03781042259001297){\blue{$poly0$}}
+\rput[bl](-0.7027196347681305,-1.2978024603384057){\ffxfqq{$poly1$}}
+\rput[bl](-2.282024723178787,-1.228761800735754){\zzttqq{$poly2$}}
+\rput[bl](1.7482237811260033,1.1272507082047336){\ffxfqq{$poly4$}}
+\rput[bl](1.497951390066391,-0.9957495745768047){\qqccqq{$poly5$}}
+\end{scriptsize}
+\end{pspicture*}
+\end{document}

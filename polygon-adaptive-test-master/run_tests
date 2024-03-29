@@ -1,0 +1,19 @@
+#!/bin/sh
+host="$(hostname -f)"
+python="python3"
+
+if [[ "$host" == *ensimag.fr ]]; then
+	python="python3.6"
+fi
+
+export POLY_PYTHON="$python"
+
+if [[ "$host" == "pcserveur.ensimag.fr" ]]; then
+	echo "Attention : vous êtes sur pcserveur, limitation aux tests 'fast'."
+	echo "Connectez-vous plutôt à une machine spécifique, plus d'infos sur :"
+	echo "    https://wiki.bubu-ensimag.fr/wiki_ensimag/pc_perso/ssh"
+	exec "$python" run_tests.py 1 fast
+fi;
+
+
+exec "$python" run_tests.py $@

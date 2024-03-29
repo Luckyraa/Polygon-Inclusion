@@ -1,0 +1,10 @@
+#!/bin/sh
+host="$(hostname -f)"
+python="python3"
+
+if [[ "$host" == *ensimag.fr ]]; then
+	python="python3.6"
+fi
+
+export POLY_PYTHON="$python"
+exec "$python" tycat.py $@
