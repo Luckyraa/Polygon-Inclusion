@@ -35,8 +35,8 @@ def separate_polygons_to_zones(polygones, num_horisontal_lines, num_vertical_lin
     utilise separate_polygons_with_line pour creer l'ensemble du quadrillage de la fenêtre en zones
     la classe Polygon a ete modifiee en consequence pour stocker la zone a laquelle chaque polygone appartient
     """
-    vertical_line_delta   = (Polygon.ABS_MAX_X - Polygon.ABS_MIN_X)//(num_vertical_lines + 1)
-    horizontal_line_delta = (Polygon.ABS_MAX_Y - Polygon.ABS_MIN_Y)//(num_horisontal_lines + 1)
+    vertical_line_delta   = ( (Polygon.ABS_MAX_X - Polygon.ABS_MIN_X)//(num_vertical_lines + 1) ) +1
+    horizontal_line_delta = ( (Polygon.ABS_MAX_Y - Polygon.ABS_MIN_Y)//(num_horisontal_lines + 1) ) +1
     vertical_zones          = []
     vertical_zones_milieu   = []
     horizontal_zones        = []

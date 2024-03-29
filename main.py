@@ -9,7 +9,7 @@ from geo.point import Point
 from geo.segment import Segment
 import sys
 from tycat import read_instance
-from algo2 import poly_dans_poly
+from algo2 import poly_dans_poly, poly_dans_poly2, point_dans_poly
 import zones
 import datetime
 
@@ -33,6 +33,7 @@ def trouve_inclusions(polygones):
         for g in p.zone:
             if g!=p:
                 b,dist=poly_dans_poly(p,g, True)
+
                 if b:
                     if min_dist is None:
                         poly_proche=polygones.index(g)

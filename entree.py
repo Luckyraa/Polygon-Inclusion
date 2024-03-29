@@ -112,7 +112,7 @@ def genere_entree_poly(N):
         deltas += 20
         liste_poly.append(poly)
         for point in poly.points:
-            print(f"{i} {point.coordinates[0]} {point.coordinates[1]}")
+            print(f"{i} {point.coordinates[0]/1000} {point.coordinates[1]/1000}")
 
 
 def genere_entree_triangle(N):
