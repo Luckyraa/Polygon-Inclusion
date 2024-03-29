@@ -59,7 +59,13 @@ def point_dans_poly(p,pol):
         if segment.endpoints[0].coordinates[0] == segment.endpoints[1].coordinates[0]:
             continue
 
-        b,x,y= intersect(s,segment)
+        # if both the start and the end of the segment are on one side of the line then there is no need to check for
+        # intersection...
+        if (segment.endpoints[0].coordinates[0] > p.coordinates[0] and segment.endpoints[1].coordinates[0] > p.coordinates[0]) or (segment.endpoints[0].coordinates[0] < p.coordinates[0] and segment.endpoints[1].coordinates[0] < p.coordinates[0]):
+            b = False
+        else:
+            b,x,y= intersect(s,segment)
+
         # print(b, x, y)
 
         if b:
