@@ -33,6 +33,7 @@ class Polygon:
     ABS_MAX_Y = -float("inf")
     ABS_MIN_X = float("inf")
     ABS_MIN_Y = float("inf")
+    INDEX = 0
 
     def __init__(self, points):
         assert len(points) > 2
@@ -49,6 +50,10 @@ class Polygon:
         Polygon.ABS_MIN_Y = min(Polygon.ABS_MIN_Y, self.min_y)
 
         self.zone = []
+        self.hash = id(self)
+
+        self.index = Polygon.INDEX   # saves polygone index
+        Polygon.INDEX += 1
 
     @classmethod
     def square(cls, start_x, start_y, side):
@@ -127,4 +132,4 @@ class Polygon:
         return self is other
     
     def __hash__(self) -> int:
-        return id(self)
+        return self.hash
