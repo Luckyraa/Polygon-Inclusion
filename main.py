@@ -36,11 +36,11 @@ def trouve_inclusions(polygones):
 
                 if b:
                     if min_dist is None:
-                        poly_proche=polygones.index(g)
+                        poly_proche=g.index
                         min_dist=dist
                     else:
                         if dist<min_dist:
-                            poly_proche=polygones.index(g)
+                            poly_proche=g.index
                             min_dist=dist
             j+=1
         if poly_proche is not None:
