@@ -49,6 +49,7 @@ class Polygon:
         Polygon.ABS_MIN_Y = min(Polygon.ABS_MIN_Y, self.min_y)
 
         self.zone = []
+        self.hash = id(self)
 
     @classmethod
     def square(cls, start_x, start_y, side):
@@ -127,4 +128,4 @@ class Polygon:
         return self is other
     
     def __hash__(self) -> int:
-        return id(self)
+        return self.hash
